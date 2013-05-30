@@ -36,11 +36,11 @@ if [[ "$1" == "--restore" ]] || [[ "$1" == "-r" ]]; then
   if [[ "$CONFIRM" == "y" ]]; then
     mysql -h$DBHOST -u$DBUSER -p"$DBPASS" $DBNAME < var/db.sql
 cat <<EOT
-#######################################
+######################################
 
- MYSQL IMPORT COMPLETE
+MYSQL IMPORT COMPLETE
 
-########################################
+######################################
 EOT
   fi
   exit
