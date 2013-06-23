@@ -1,0 +1,33 @@
+Host vps
+
+HostName  vps26902.ovh.net
+User root
+IdentityFile ~/.ssh/id_rsa
+ServerAliveInterval 30
+ServerAliveCountMax 120
+
+Host jko
+HostName  142.4.211.145
+User mgf_pcg
+IdentityFile ~/.ssh/id_rsa
+ServerAliveInterval 30
+ServerAliveCountMax 120
+Port 5775
+
+
+Host proxmox
+HostName  192.168.1.200
+User root
+IdentityFile ~/.ssh/id_rsa
+ServerAliveInterval 30
+ServerAliveCountMax 120
+Port 22
+
+
+Host ubuntu1
+HostName  192.168.1.16
+User damarsan
+IdentityFile ~/.ssh/id_rsa
+ServerAliveInterval 30
+ServerAliveCountMax 120
+Port 22
