@@ -1,13 +1,13 @@
 Host vps
 
-HostName  vps26902.ovh.net
+HostName  hostname
 User root
 IdentityFile ~/.ssh/id_rsa
 ServerAliveInterval 30
 ServerAliveCountMax 120
 
 Host jko
-HostName  142.4.211.145
+HostName  hostname
 User mgf_pcg
 IdentityFile ~/.ssh/id_rsa
 ServerAliveInterval 30
