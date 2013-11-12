@@ -94,7 +94,16 @@ if [ "$dom_1" != "" ]; then
 	echo  "ips in SPF records:"
 	ips=(`get_dns_spf1 ${dom_1}`)
 	echo ${ips[*]}
+echo "###############"
+res=$(check_spf "$public_ip" ${ips[@]})
+	if [ "$res" == "ok" ] 
+		then 
+			echo -e "\e[32m$public_ip found in $dom_1 SPF Record\e[0m"
+		else  
+			echo -e "\e[31m$public_ip not found in $dom_1 SPF Record\e[0m"
+	fi
 fi
+
 
 
 if [ "$dom_2" != "" ]; then
@@ -102,13 +111,30 @@ if [ "$dom_2" != "" ]; then
 	echo  "ips in SPF records:"
 	ips=(`get_dns_spf1 ${dom_2}`)
 	echo ${ips[*]}
+echo "###############"
+res=$(check_spf "$public_ip" ${ips[@]})
+	if [ "$res" == "ok" ] 
+		then 
+			echo -e "\e[32m$public_ip found in $dom_2 SPF Record\e[0m"
+		else  
+			echo -e "\e[31m$public_ip not found in $dom_2 SPF Record\e[0m"
+	fi
 fi
+
 
 if [ "$dom_3" != "" ]; then
 	echo -e "\e[35m$dom_3\e[0m"
 	echo  "ips in SPF records:"
 	ips=(`get_dns_spf1 ${dom_3}`)
 	echo ${ips[*]}
+echo "###############"
+res=$(check_spf "$public_ip" ${ips[@]})
+	if [ "$res" == "ok" ] 
+		then 
+			echo -e "\e[32m$public_ip found in $dom_3 SPF Record\e[0m"
+		else  
+			echo -e "\e[31m$public_ip not found in $dom_3 SPF Record\e[0m"
+	fi
 fi
 
 if [ "$dom_4" != "" ]; then
@@ -116,12 +142,12 @@ if [ "$dom_4" != "" ]; then
 	ips=(`get_dns_spf1 ${dom_4}`)
 	echo  "ips in SPF records:"
 	echo ${ips[*]}
-fi
 echo "###############"
 res=$(check_spf "$public_ip" ${ips[@]})
-if [ "$res" == "ok" ] 
-	then 
-		echo -e "\e[32m$public_ip found in SPF Record\e[0m"
-	else  
-		echo -e "\e[31m$public_ip not found in SPF Record\e[0m"
+	if [ "$res" == "ok" ] 
+		then 
+			echo -e "\e[32m$public_ip found in $dom_4 SPF Record\e[0m"
+		else  
+			echo -e "\e[31m$public_ip not found in $dom_4 SPF Record\e[0m"
+	fi
 fi
