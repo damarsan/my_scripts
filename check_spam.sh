@@ -15,26 +15,26 @@ get_dns_spf1() {
 check_spf() {
 	for i in "${@:2}"; do [[ "$i" == "$1" ]]  && echo "ok"; done
 }
-
+database="gesio_freemium"
 echo "#############################"
 echo "Checking mail requeriments..."
 echo "#############################"
 echo "Checking  ENVIO FACTURAS Y RECLAMACIONES DE RECIBOS mailfrom:"
-mailfrom_f=`psql -U postgres -d gesio_freemium -c "SELECT mailadm FROM configuracion;" | head -3 | tail -1`
+mailfrom_f=`psql -U postgres -d ${database} -c "SELECT mailadm FROM configuracion;" | head -3 | tail -1`
 echo -e "\e[32m$mailfrom_f\e[0m"
 echo "Checking  ENVIO PRESUPUESTOS mailfrom:"
-temp=`psql -U postgres -d gesio_freemium -c "SELECT graf_senderdeluser_presupuestos FROM confgrafica;" | head -3 | tail -1`
+temp=`psql -U postgres -d ${database} -c "SELECT graf_senderdeluser_presupuestos FROM confgrafica;" | head -3 | tail -1`
 if [ "$temp" == "1" ]; then 
-	mailfrom_p=`psql -U postgres -d gesio_freemium -c "SELECT tra_mail FROM trabajador;" | head -3 | tail -1`
+	mailfrom_p=`psql -U postgres -d ${database} -c "SELECT tra_mail FROM trabajador;" | head -3 | tail -1`
 else 
-	mailfrom_p=`psql -U postgres -d gesio_freemium -c "SELECT graf_alertassenderadm FROM confgrafica;" | head -3 | tail -1`
+	mailfrom_p=`psql -U postgres -d ${database} -c "SELECT graf_alertassenderadm FROM confgrafica;" | head -3 | tail -1`
 fi
 echo -e "\e[32m$mailfrom_p\e[0m"
 echo "Checking  ENVIO DE ALERTAS mailfrom:"
-mailfrom_al=`psql -U postgres -d gesio_freemium -c "SELECT graf_alertasfrommail FROM confgrafica;" | head -3 | tail -1`
+mailfrom_al=`psql -U postgres -d ${database} -c "SELECT graf_alertasfrommail FROM confgrafica;" | head -3 | tail -1`
 echo -e "\e[32m$mailfrom_al\e[0m"
 echo "Checking  ENVIO DE AVISOS mailfrom:"
-mailfrom_av=`psql -U postgres -d gesio_freemium -c "SELECT graf_avisosfrommail FROM confgrafica;" | head -3 | tail -1`
+mailfrom_av=`psql -U postgres -d ${database} -c "SELECT graf_avisosfrommail FROM confgrafica;" | head -3 | tail -1`
 echo -e "\e[32m$mailfrom_av\e[0m"
 echo "##############################"
 echo "Checking server requeriments..."
