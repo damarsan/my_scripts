@@ -1,0 +1,1 @@
+watch -n 1 "echo -n 'Apache Processes: ' && ps -C httpd --no-headers | wc -l && free -m"
