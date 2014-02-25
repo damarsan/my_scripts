@@ -1,0 +1,1 @@
+watch -n 1 "echo -n 'Apache Processes: ' && ps -C httpd --no-headers | wc -l && echo -n 'Connections: ' && netstat -an | grep :80 | grep -i EST | wc -l && free -m"
