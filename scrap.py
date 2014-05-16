@@ -10,7 +10,6 @@ import csv
 from urlparse import urlparse
 reload(sys)
 sys.setdefaultencoding('utf-8')
-print sys.getdefaultencoding()
 
 ins_domains = open( sys.argv[1], "r" )
 out = open("result_" + sys.argv[1], "w" )
@@ -39,22 +38,19 @@ for line in ins_domains:
 		# GET URL REDIRECTION
 		getredir = content2.geturl()
 		getredir = getredir.split('/')
-
-		if len(getredir) == 4:
+		if len(getredir) >= 4:
 			redir = getredir[3]
 		# GET TITLE PAGE
 		host = urlparse(content2.geturl()).netloc
 		allTitles =  re.compile('<title>(.*?)</title>')
 		title = re.findall(allTitles,content)
-		print title[0].decode('utf8')
 		content2.close()
 	except Exception as x:
 		print host,x
 		continue
 	try:
-		#out.write("%s,%s,%s,%s,%s\n" % (host,res2[0],title[0],code,"/"+redir))
 		out.write("%s#%s#%s#%s#%s\n" % (host,res2[0],title[0],code,"/"+redir))
 	except Exception as y:
-		out.write("%s,%s\n" % (host,y))
+		error.write("%s,%s\n" % (host,y))
 
 ins_domains.close()
