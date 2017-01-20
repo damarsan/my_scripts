@@ -1,1 +1,0 @@
-mysqladmin -u admin -p`cat /etc/psa/.psa.shadow` extended-status | grep -wi 'threads_connected\|threads_running' | awk '{ print $2,$4}'
